@@ -1,0 +1,29 @@
+.single-article-card {
+    margin: auto;
+    margin-top: 2em;
+    width: 30em;
+}
+
+.single-article-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.single-article-date {
+    margin-top: 0;
+    padding: 0;
+}
+
+.single-article-title {
+    text-align: center;
+}
+
+.single-articles-footer {
+    display: flex;
+    justify-content: space-between;
+    max-height: fit-content;
+}
+
+.card-body {
+    margin-top: 0;
+}

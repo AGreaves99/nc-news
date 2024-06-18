@@ -9,3 +9,9 @@ export function getArticles(params) {
         return data
     })
 } 
+
+export function getArticle(article_id) {
+    return newsAPI.get(`/articles/${article_id}`).then(({data}) => {
+        return data.article
+    })
+}

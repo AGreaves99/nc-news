@@ -16,3 +16,27 @@
     display: flex;
     justify-content: space-between;
 }
+
+.card-link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.article-date {
+    margin-top: 0;
+    padding: 0;
+}
+
+.article-title {
+    text-align: center;
+}
+
+.articles-footer {
+    display: flex;
+    justify-content: space-between;
+    max-height: fit-content;
+}
+
+.card-body {
+    margin-top: 0;
+}
