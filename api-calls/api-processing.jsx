@@ -7,6 +7,7 @@ export function makeArticleList(params) {
     const articlesCards = articles.map((article) => {
       const formatTopic =
         article.topic.charAt(0).toUpperCase() + article.topic.slice(1);
+        const formatDate = new Date(article.created_at).toLocaleString()
       return (
         <Card key={article.article_id} className="article-card">
           <Card.Header className="articles-header">
@@ -16,7 +17,7 @@ export function makeArticleList(params) {
           <Card.Img src={article.article_img_url}></Card.Img>
           <Card.Body>
             <Card.Title>{article.title}</Card.Title>
-            <div className="article-date">{article.created_at}</div>
+            <div className="article-date">{formatDate}</div>
             <Card.Text>{article.body}</Card.Text>
           </Card.Body>
           <CardFooter className="articles-header">
