@@ -1,0 +1,18 @@
+.comment-cards-container {
+    width: 40em;
+    margin: auto;
+    margin-bottom: 1em;
+}
+
+.comment-card {
+    margin-top: 1em;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment-footer {
+    text-align: right;
+}
