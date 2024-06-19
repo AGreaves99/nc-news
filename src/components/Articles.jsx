@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { makeArticleList } from "../../api-calls/api-processing";
+import { makeArticleList } from "../../api-calls/api-articles-processing";
 import "../../styling/Articles.css";
 
 function Articles({pageNumber, setTotalPage, itemsPerPage, children}) {

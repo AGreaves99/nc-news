@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { makeSingleArticle } from "../../api-calls/api-processing";
+import { makeSingleArticle } from "../../api-calls/api-articles-processing";
 import "../../styling/SingleArticle.css"
 
 function SingleArticle() {
