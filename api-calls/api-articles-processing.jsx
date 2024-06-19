@@ -47,10 +47,12 @@ export function makeSingleArticle(article_id) {
           <span>{formatTopic}</span>
           <span className="single-article-author">{article.author}</span>
         </Card.Header>
-        <Card.Img src={article.article_img_url}></Card.Img>
+        <Card.Img src={article.article_img_url} alt="article image"></Card.Img>
         <Card.Body>
           <Card.Body className="single-article-date">{formatDate}</Card.Body>
-          <Card.Title className="single-article-title">{article.title}</Card.Title>
+          <Card.Title className="single-article-title">
+            {article.title}
+          </Card.Title>
           <Card.Text>{article.body}</Card.Text>
         </Card.Body>
         <CardFooter className="single-article-header">
