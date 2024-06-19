@@ -11,7 +11,7 @@ function SingleArticle() {
       setSingleArticle(articleCard);
     });
   }, []);
-  console.log(typeof singleArticle);
+
   return <>{singleArticle}</>;
 }
 
