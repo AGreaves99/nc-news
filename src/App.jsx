@@ -8,6 +8,7 @@ import ItemsPerPage from "./components/ItemsPerPage";
 import { Routes, Route } from "react-router-dom";
 import SingleArticle from "./components/SingleArticle";
 import Comments from "./components/Comments";
+import VoteButton from "./components/VoteButton";
 
 function App() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -45,10 +46,13 @@ function App() {
         <Route
           path="/:article_id"
           element={
-            <div className="articles-comments-container">
-              <SingleArticle />
-              <Comments />
-            </div>
+            <>
+              <VoteButton />
+              <div className="articles-comments-container">
+                <SingleArticle />
+                <Comments />
+              </div>
+            </>
           }
         />
       </Routes>
