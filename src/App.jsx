@@ -45,7 +45,7 @@ function App() {
         <Route
           path="/:article_id"
           element={
-            <div>
+            <div className="articles-comments-container">
               <SingleArticle />
               <Comments />
             </div>
