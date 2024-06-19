@@ -29,14 +29,18 @@
 
 .article-title {
     text-align: center;
+    padding-bottom: 2em;
 }
 
 .articles-footer {
+    position: absolute;
     display: flex;
     justify-content: space-between;
-    max-height: fit-content;
+    bottom: 0;
+    width: 100%;
 }
 
 .card-body {
     margin-top: 0;
+    padding-bottom: 0;
 }

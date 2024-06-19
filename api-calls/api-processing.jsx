@@ -16,7 +16,10 @@ export function makeArticleList(params) {
             <span className="article-author">{article.author}</span>
           </Card.Header>
           <Link className="card-link" to={`/${article.article_id}`}>
-            <Card.Img src={article.article_img_url}></Card.Img>
+            <Card.Img
+              src={article.article_img_url}
+              alt="article image"
+            ></Card.Img>
             <Card.Body className="article-date">{formatDate}</Card.Body>
             <Card.Body>
               <Card.Title className="article-title">{article.title}</Card.Title>
@@ -47,7 +50,7 @@ export function makeSingleArticle(article_id) {
         <Card.Img src={article.article_img_url}></Card.Img>
         <Card.Body>
           <Card.Body className="single-article-date">{formatDate}</Card.Body>
-          <Card.Title>{article.title}</Card.Title>
+          <Card.Title className="single-article-title">{article.title}</Card.Title>
           <Card.Text>{article.body}</Card.Text>
         </Card.Body>
         <CardFooter className="single-article-header">
