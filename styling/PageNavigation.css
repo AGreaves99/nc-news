@@ -1,0 +1,13 @@
+.pagination {
+    justify-content: center;
+}
+
+.page-item {
+    margin: 2px;
+    width: 4em;
+}
+
+.page-link {
+    text-align: center;
+    color: rgb(253, 55, 55);
+}

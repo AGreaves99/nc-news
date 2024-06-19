@@ -1,0 +1,13 @@
+.items-per-page-container {
+  margin-left: 4em;
+  margin-top: 0.5em;
+  font-size: 1em;
+  width: 50rem;
+  justify-content: space-between;
+}
+
+#items-per-page {
+  margin-left: 0.5em;
+  width: 4rem;
+  text-align: center;
+}

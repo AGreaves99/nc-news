@@ -1,0 +1,18 @@
+.articles-list {
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.article-card {
+    margin: 1rem;
+    width: 20em;
+}
+
+.articles-header {
+    display: flex;
+    justify-content: space-between;
+}

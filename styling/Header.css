@@ -1,0 +1,12 @@
+.header {
+  background-color: rgb(253, 55, 55);
+  padding: 1.5em;
+}
+
+.header-titles {
+  padding-inline: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
