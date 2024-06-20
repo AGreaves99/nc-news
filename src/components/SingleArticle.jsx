@@ -4,6 +4,12 @@ import "../../styling/SingleArticle.css";
 import { getArticle, voteComment } from "../../api-calls/api-calls";
 import { Card, CardFooter } from "react-bootstrap";
 import { Button } from "react-bootstrap";
+import {
+  FaRegThumbsUp,
+  FaRegThumbsDown,
+  FaThumbsUp,
+  FaThumbsDown,
+} from "react-icons/fa";
 import "../../styling/VoteButton.css";
 
 function SingleArticle() {
@@ -27,13 +33,15 @@ function SingleArticle() {
   }, []);
 
   function handleClick(event) {
+    const currentTargetValue = event.currentTarget.value
+    console.log(currentTargetValue);
     setCurrentAndPreviousValue((currentValues) => {
       const updatedObject = { ...currentValues };
       updatedObject.previous = currentValues.current;
-      if (currentValues.current === Number(event.target.value)) {
+      if (currentValues.current === Number(currentTargetValue)) {
         updatedObject.current = 0;
       } else {
-        updatedObject.current = Number(event.target.value);
+        updatedObject.current = Number(currentTargetValue);
       }
       setArticleVotes(
         articleVotes + updatedObject.current - updatedObject.previous
@@ -67,23 +75,33 @@ function SingleArticle() {
       </Card.Body>
       <CardFooter className="single-article-header">
         <span>{articleData.comment_count} comments</span>
-        <div>
+        <div className="votes-and-buttons">
           <Button
+            className="vote-button"
             id="upvote"
             value={1}
             active={currentAndPreviousValue.current === 1}
             onClick={handleClick}
-          >
-            Upvote
+          >            
+            {currentAndPreviousValue.current === 1 ? (
+              <FaThumbsUp />
+            ) : (
+              <FaRegThumbsUp />
+            )}
           </Button>
-          {articleVotes} votes
+          <span className="votes-number">{articleVotes} votes</span>
           <Button
+            className="vote-button"
             id="downvote"
             value={-1}
             active={currentAndPreviousValue.current === -1}
             onClick={handleClick}
           >
-            Downvote
+            {currentAndPreviousValue.current === -1 ? (
+              <FaThumbsDown />
+            ) : (
+              <FaRegThumbsDown />
+            )}
           </Button>
         </div>
       </CardFooter>
