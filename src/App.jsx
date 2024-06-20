@@ -47,7 +47,7 @@ function App() {
           path="/:article_id"
           element={
             <>
-              <VoteButton />
+              {/* <VoteButton /> */}
               <div className="articles-comments-container">
                 <SingleArticle />
                 <Comments />
