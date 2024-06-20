@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import "../../styling/SingleArticle.css";
-import { getArticle } from "../../api-calls/api-calls";
+import { getArticle, voteComment } from "../../api-calls/api-calls";
 import { Card, CardFooter } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import "../../styling/VoteButton.css";
@@ -22,6 +22,7 @@ function SingleArticle() {
         topic: article.topic.charAt(0).toUpperCase() + article.topic.slice(1),
         created_at: new Date(article.created_at).toLocaleString(),
       });
+      setArticleVotes(article.votes);
     });
   }, []);
 
@@ -37,9 +38,12 @@ function SingleArticle() {
       setArticleVotes(
         articleVotes + updatedObject.current - updatedObject.previous
       );
+      voteComment(
+        article_id,
+        updatedObject.current - updatedObject.previous
+      ).then((article) => {});
       return updatedObject;
     });
-    console.log(articleVotes);
   }
 
   const articleCard = (
@@ -86,11 +90,7 @@ function SingleArticle() {
     </Card>
   );
 
-  return (
-    <>
-      {articleCard}
-    </>
-  );
+  return <>{articleCard}</>;
 }
 
 export default SingleArticle;
