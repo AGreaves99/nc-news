@@ -19,41 +19,43 @@ function App() {
     <>
       <Header />
       <Navbar />
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <ItemsPerPage
-                itemsPerPage={itemsPerPage}
-                setItemsPerPage={setItemsPerPage}
-              />
-              <Articles
-                pageNumber={pageNumber}
-                itemsPerPage={itemsPerPage}
-                setTotalPage={setTotalPage}
-              >
-                <PageNavigation
-                  pageNumber={pageNumber}
-                  setPageNumber={setPageNumber}
-                  totalPage={totalPage}
+      <main>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <ItemsPerPage
+                  itemsPerPage={itemsPerPage}
+                  setItemsPerPage={setItemsPerPage}
                 />
-              </Articles>
-            </>
-          }
-        />
-        <Route
-          path="/:article_id"
-          element={
-            <>
-              <div className="articles-comments-container">
-                <SingleArticle />
-                <Comments />
-              </div>
-            </>
-          }
-        />
-      </Routes>
+                <Articles
+                  pageNumber={pageNumber}
+                  itemsPerPage={itemsPerPage}
+                  setTotalPage={setTotalPage}
+                >
+                  <PageNavigation
+                    pageNumber={pageNumber}
+                    setPageNumber={setPageNumber}
+                    totalPage={totalPage}
+                  />
+                </Articles>
+              </>
+            }
+          />
+          <Route
+            path="/:article_id"
+            element={
+              <>
+                <div className="articles-comments-container">
+                  <SingleArticle />
+                  <Comments />
+                </div>
+              </>
+            }
+          />
+        </Routes>
+      </main>
     </>
   );
 }

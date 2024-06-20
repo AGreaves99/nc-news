@@ -108,7 +108,7 @@ function SingleArticle() {
     </Card>
   );
 
-  return <>{articleCard}</>;
+  return <article>{articleCard}</article>;
 }
 
 export default SingleArticle;

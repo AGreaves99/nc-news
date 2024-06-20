@@ -19,7 +19,7 @@ function Articles({pageNumber, setTotalPage, itemsPerPage, children}) {
   
   return (
     <>
-      <div className="articles-list">{articleList}</div>
+      <section className="articles-list">{articleList}</section>
       {children}
     </>
   );

@@ -11,7 +11,6 @@ function ItemsPerPage({setItemsPerPage, itemsPerPage}) {
             <option value={20}>20</option>
             <option value={40}>40</option>
         </select>
-
     </form>
 }
 
