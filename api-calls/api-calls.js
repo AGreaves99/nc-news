@@ -21,3 +21,7 @@ export function getComments(article_id) {
         return data.comments
     })
 }
+
+export function voteComment(article_id, increment) {
+    newsAPI.patch(`/articles/${article_id}`, {inc_votes: increment})
+}
