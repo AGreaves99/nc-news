@@ -45,10 +45,12 @@ function App() {
         <Route
           path="/:article_id"
           element={
-            <div className="articles-comments-container">
-              <SingleArticle />
-              <Comments />
-            </div>
+            <>
+              <div className="articles-comments-container">
+                <SingleArticle />
+                <Comments />
+              </div>
+            </>
           }
         />
       </Routes>
