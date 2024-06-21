@@ -1,8 +1,8 @@
 .single-article-card {
-    margin: auto;
+    width: fit-content;
+    max-width: 40em;
+    margin-inline: 1em;
     margin-top: 2em;
-    width: 40em;
-    max-width: fit-content;
 }
 
 .single-article-header {

@@ -1,9 +1,8 @@
 .comment-cards-container {
     width: 40em;
-    margin: auto;
     margin-top: 1em;
     margin-bottom: 1em;
-    max-width: fit-content;
+    margin-inline: 1em;
 }
 
 .comment-card {
