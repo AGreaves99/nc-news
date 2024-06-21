@@ -37,7 +37,6 @@ function SingleArticle() {
 
   function handleClick(event) {
     const currentTargetValue = event.currentTarget.value;
-    console.log(currentTargetValue);
     setCurrentAndPreviousValue((currentValues) => {
       const updatedObject = { ...currentValues };
       updatedObject.previous = currentValues.current;
