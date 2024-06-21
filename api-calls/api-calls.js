@@ -29,3 +29,11 @@ export function voteComment(article_id, increment) {
       return data.article;
     });
 }
+
+export function postComment(article_id, newComment) {
+  console.log(newComment);
+  return newsAPI.post(`/articles/${article_id}/comments`, newComment)
+  .then(({data}) => {
+    return data.comment
+  })
+}
