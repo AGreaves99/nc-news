@@ -11,6 +11,8 @@ import {
   FaThumbsDown,
 } from "react-icons/fa";
 import "../../styling/VoteButton.css";
+import Comments from "./Comments";
+import PostComment from "./PostComment";
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -20,6 +22,7 @@ function SingleArticle() {
     current: 0,
     previous: 0,
   });
+  const [comments, setComments] = useState([]);
 
   useEffect(() => {
     getArticle(article_id).then((article) => {
@@ -33,7 +36,7 @@ function SingleArticle() {
   }, []);
 
   function handleClick(event) {
-    const currentTargetValue = event.currentTarget.value
+    const currentTargetValue = event.currentTarget.value;
     console.log(currentTargetValue);
     setCurrentAndPreviousValue((currentValues) => {
       const updatedObject = { ...currentValues };
@@ -82,7 +85,7 @@ function SingleArticle() {
             value={1}
             active={currentAndPreviousValue.current === 1}
             onClick={handleClick}
-          >            
+          >
             {currentAndPreviousValue.current === 1 ? (
               <FaThumbsUp />
             ) : (
@@ -108,7 +111,15 @@ function SingleArticle() {
     </Card>
   );
 
-  return <article>{articleCard}</article>;
+  return (
+    <div className="articles-comments-container">
+      <div className="article-newcomment-container">
+        <article>{articleCard}</article>
+        <PostComment setComments={setComments} setArticleData={setArticleData}/>
+      </div>
+      <Comments comments={comments} setComments={setComments} />
+    </div>
+  );
 }
 
 export default SingleArticle;

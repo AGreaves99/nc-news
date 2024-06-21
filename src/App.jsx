@@ -7,7 +7,6 @@ import { useState } from "react";
 import ItemsPerPage from "./components/ItemsPerPage";
 import { Routes, Route } from "react-router-dom";
 import SingleArticle from "./components/SingleArticle";
-import Comments from "./components/Comments";
 
 function App() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -46,12 +45,7 @@ function App() {
           <Route
             path="/:article_id"
             element={
-              <>
-                <div className="articles-comments-container">
-                  <SingleArticle />
-                  <Comments />
-                </div>
-              </>
+              <SingleArticle />
             }
           />
         </Routes>
