@@ -13,6 +13,7 @@ import {
 import "../../styling/VoteButton.css";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
+import AlertMessage from "./AlertMessage";
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -23,6 +24,11 @@ function SingleArticle() {
     previous: 0,
   });
   const [comments, setComments] = useState([]);
+  const [formMessage, setFormMessage] = useState(false);
+  const [formMessageDetails, setFormMessageDetails] = useState({
+    variant: "",
+    message: "",
+  });
 
   useEffect(() => {
     getArticle(article_id).then((article) => {
@@ -51,7 +57,16 @@ function SingleArticle() {
       voteComment(
         article_id,
         updatedObject.current - updatedObject.previous
-      ).then((article) => {});
+      ).catch((err) => {
+        setArticleVotes(
+          articleData.votes
+        );
+        setFormMessageDetails({
+          variant: "danger",
+          message: "An error occurred while voting, please try again later"
+        })
+        setFormMessage(true)
+      });
       return updatedObject;
     });
   }
@@ -78,6 +93,20 @@ function SingleArticle() {
       <CardFooter className="single-article-header">
         <span>{articleData.comment_count} comments</span>
         <div className="votes-and-buttons">
+            <Button
+              className="vote-button"
+              id="downvote"
+              value={-1}
+              active={currentAndPreviousValue.current === -1}
+              onClick={handleClick}
+            >
+              {currentAndPreviousValue.current === -1 ? (
+                <FaThumbsDown />
+              ) : (
+                <FaRegThumbsDown />
+              )}
+            </Button>
+            <span className="votes-number">{articleVotes} votes</span>
           <Button
             className="vote-button"
             id="upvote"
@@ -91,20 +120,6 @@ function SingleArticle() {
               <FaRegThumbsUp />
             )}
           </Button>
-          <span className="votes-number">{articleVotes} votes</span>
-          <Button
-            className="vote-button"
-            id="downvote"
-            value={-1}
-            active={currentAndPreviousValue.current === -1}
-            onClick={handleClick}
-          >
-            {currentAndPreviousValue.current === -1 ? (
-              <FaThumbsDown />
-            ) : (
-              <FaRegThumbsDown />
-            )}
-          </Button>
         </div>
       </CardFooter>
     </Card>
@@ -114,7 +129,14 @@ function SingleArticle() {
     <div className="articles-comments-container">
       <div className="article-newcomment-container">
         <article>{articleCard}</article>
-        <PostComment setComments={setComments} setArticleData={setArticleData}/>
+        <PostComment
+          setComments={setComments}
+          setArticleData={setArticleData}
+          formMessageDetails={formMessageDetails}
+          setFormMessageDetails={setFormMessageDetails}
+          setFormMessage={setFormMessage}
+          formMessage={formMessage}
+        />
       </div>
       <Comments comments={comments} setComments={setComments} />
     </div>

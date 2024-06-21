@@ -10,17 +10,19 @@ import Row from "react-bootstrap/Row";
 import AlertMessage from "./AlertMessage";
 import "../../styling/PostComment.css";
 
-function PostComment({ setComments, setArticleData }) {
+function PostComment({
+  setComments,
+  setArticleData,
+  formMessage,
+  setFormMessage,
+  setFormMessageDetails,
+  formMessageDetails
+}) {
   const { user } = useContext(UserContext);
   const { article_id } = useParams();
   const [newComment, setNewComment] = useState({
     username: user,
     body: "",
-  });
-  const [formMessage, setFormMessage] = useState(false);
-  const [formMessageDetails, setFormMessageDetails] = useState({
-    variant: "",
-    message: "",
   });
 
   function handleSubmit(event) {
