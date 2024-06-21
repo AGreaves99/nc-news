@@ -115,9 +115,9 @@ function SingleArticle() {
     <div className="articles-comments-container">
       <div className="article-newcomment-container">
         <article>{articleCard}</article>
-        <PostComment setComments={setComments}/>
+        <PostComment setComments={setComments} setArticleData={setArticleData}/>
       </div>
-      <Comments comments={comments} setComments={setComments}/>
+      <Comments comments={comments} setComments={setComments} />
     </div>
   );
 }

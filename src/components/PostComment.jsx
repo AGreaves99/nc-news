@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import "../../styling/PostComment.css"
 
-function PostComment({ setComments }) {
+function PostComment({ setComments, setArticleData }) {
   const { user } = useContext(UserContext);
   const { article_id } = useParams();
   const [newComment, setNewComment] = useState({
@@ -22,6 +22,11 @@ function PostComment({ setComments }) {
     postComment(article_id, newComment).then((returnedComment) => {
         setComments((currentComments) => {
             return [returnedComment, ...currentComments]
+        })
+        setArticleData((currentData) => {
+            return {...currentData,
+                comment_count: currentData.comment_count + 1
+            }
         })
     })
     setNewComment({
