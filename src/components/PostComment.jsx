@@ -7,6 +7,7 @@ import {postComment} from "../../api-calls/api-calls"
 import FloatingLabel from "react-bootstrap/FloatingLabel";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import "../../styling/PostComment.css"
 
 function PostComment({ setComments }) {
   const { user } = useContext(UserContext);
@@ -19,7 +20,6 @@ function PostComment({ setComments }) {
   function handleSubmit(event) {
     event.preventDefault();
     postComment(article_id, newComment).then((returnedComment) => {
-        console.log(returnedComment);
         setComments((currentComments) => {
             return [returnedComment, ...currentComments]
         })
@@ -35,9 +35,9 @@ function PostComment({ setComments }) {
   }
 
   return (
-    <Form className="comment-form" onSubmit={handleSubmit}>
-      <Row className="align-items-center">
-        <Col xs="auto">
+    <Form onSubmit={handleSubmit}>
+      <Row className="comment-form">
+        <Col>
           <FloatingLabel
             controlId="comment-input"
             label="Post a new comment: "
@@ -53,7 +53,7 @@ function PostComment({ setComments }) {
           </FloatingLabel>
         </Col>
         <Col xs="auto">
-          <Button type="submit" aria-describedby="post comment">
+          <Button className="vote-button" type="submit" aria-describedby="post comment">
             <BsFillSendFill />
           </Button>
         </Col>
