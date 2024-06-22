@@ -1,6 +1,7 @@
 .comment-form {
     align-items: center;
     padding: 1em;
+    padding-inline: 1.5em;
     padding-bottom: 0;
 }
 
