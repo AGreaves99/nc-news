@@ -7,6 +7,11 @@
 
 .comment-card {
     margin-top: 1em;
+    transition: 0.3s linear;
+}
+
+.delete {
+    opacity: 0;
 }
 
 .comment-header {
@@ -15,5 +20,11 @@
 }
 
 .comment-footer {
-    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.comment-votes {
+    margin-left: auto;
 }

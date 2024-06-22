@@ -19,10 +19,10 @@
     margin-bottom: 1em;
 }
 
-.single-articles-footer {
+.single-article-footer {
     display: flex;
     justify-content: space-between;
-    max-height: fit-content;
+    align-items: center;
 }
 
 .card-body {
