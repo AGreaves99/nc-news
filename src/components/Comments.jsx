@@ -6,10 +6,10 @@ import { Card } from "react-bootstrap";
 import DeleteButton from "./DeleteButton";
 import { UserContext } from "./UserContext";
 
-function Comments({ comments, setComments }) {
+function Comments({ comments, setComments, setArticleData }) {
   const { user } = useContext(UserContext);
   const { article_id } = useParams();
-  const [commentToDelete, setCommentToDelete] = useState(null)
+  const [commentToDelete, setCommentToDelete] = useState(null);
   useEffect(() => {
     getComments(article_id).then((comments) => {
       setComments(comments);
@@ -19,14 +19,26 @@ function Comments({ comments, setComments }) {
   const commentCards = comments.map((comment) => {
     const formatDate = new Date(comment.created_at).toLocaleString();
     return (
-      <Card className={`comment-card ${commentToDelete === comment.comment_id? "delete" : ""}`} key={comment.comment_id}>
+      <Card
+        className={`comment-card ${
+          commentToDelete === comment.comment_id ? "delete" : ""
+        }`}
+        key={comment.comment_id}
+      >
         <Card.Header className="comment-header">
           <span>{comment.author}</span>
           <span>{formatDate}</span>
         </Card.Header>
         <Card.Body className="comment-body">{comment.body}</Card.Body>
         <Card.Footer className="comment-footer">
-          {user === comment.author && <DeleteButton setComments={setComments} comment_id={comment.comment_id} setCommentToDelete={setCommentToDelete}/>}
+          {user === comment.author && (
+            <DeleteButton
+              setComments={setComments}
+              comment_id={comment.comment_id}
+              setCommentToDelete={setCommentToDelete}
+              setArticleData={setArticleData}
+            />
+          )}
           <span className="comment-votes">{comment.votes} votes</span>
         </Card.Footer>
       </Card>

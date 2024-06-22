@@ -16,7 +16,7 @@ function PostComment({
   formMessage,
   setFormMessage,
   setFormMessageDetails,
-  formMessageDetails
+  formMessageDetails,
 }) {
   const { user } = useContext(UserContext);
   const { article_id } = useParams();
