@@ -99,12 +99,12 @@ function PostComment({
           </Button>
         </Col>
       </Row>
-      {formMessage ? (
+      {formMessage && (
         <AlertMessage
           className="new-comment-validation"
           formMessageDetails={formMessageDetails}
         />
-      ) : null}
+      )}
     </Form>
   );
 }

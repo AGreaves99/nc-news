@@ -13,7 +13,6 @@ import {
 import "../../styling/VoteButton.css";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
-import AlertMessage from "./AlertMessage";
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -90,7 +89,7 @@ function SingleArticle() {
         </Card.Title>
         <Card.Text>{articleData.body}</Card.Text>
       </Card.Body>
-      <CardFooter className="single-article-header">
+      <CardFooter className="single-article-footer">
         <span>{articleData.comment_count} comments</span>
         <div className="votes-and-buttons">
             <Button
