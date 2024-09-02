@@ -1,15 +1,11 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import "../../styling/Comments.css";
 import { getComments } from "../../api-calls/api-calls";
-import { Card } from "react-bootstrap";
-import DeleteButton from "./DeleteButton";
-import { UserContext } from "./UserContext";
+import CommentCard from "./CommentCard";
 
-function Comments({ comments, setComments }) {
-  const { user } = useContext(UserContext);
+function Comments({ comments, setComments, setArticleData }) {
   const { article_id } = useParams();
-  const [commentToDelete, setCommentToDelete] = useState(null)
   useEffect(() => {
     getComments(article_id).then((comments) => {
       setComments(comments);
@@ -19,17 +15,13 @@ function Comments({ comments, setComments }) {
   const commentCards = comments.map((comment) => {
     const formatDate = new Date(comment.created_at).toLocaleString();
     return (
-      <Card className={`comment-card ${commentToDelete === comment.comment_id? "delete" : ""}`} key={comment.comment_id}>
-        <Card.Header className="comment-header">
-          <span>{comment.author}</span>
-          <span>{formatDate}</span>
-        </Card.Header>
-        <Card.Body className="comment-body">{comment.body}</Card.Body>
-        <Card.Footer className="comment-footer">
-          {user === comment.author && <DeleteButton setComments={setComments} comment_id={comment.comment_id} setCommentToDelete={setCommentToDelete}/>}
-          <span className="comment-votes">{comment.votes} votes</span>
-        </Card.Footer>
-      </Card>
+      <CommentCard
+        key={comment.comment_id}
+        comment={comment}
+        formatDate={formatDate}
+        setComments={setComments}
+        setArticleData={setArticleData}
+      />
     );
   });
   return <section className="comment-cards-container">{commentCards}</section>;

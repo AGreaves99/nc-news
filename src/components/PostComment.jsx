@@ -16,7 +16,7 @@ function PostComment({
   formMessage,
   setFormMessage,
   setFormMessageDetails,
-  formMessageDetails
+  formMessageDetails,
 }) {
   const { user } = useContext(UserContext);
   const { article_id } = useParams();
@@ -45,15 +45,17 @@ function PostComment({
             variant: "success",
             message: "Comment posted successfully",
           });
-          setTimeout(() => {
-            setFormMessage(false);
-          }, 3000);
         })
         .catch((err) => {
           setFormMessageDetails({
             variant: "danger",
             message: "An error occurred, please try again later",
           });
+        })
+        .finally(() => {
+          setTimeout(() => {
+            setFormMessage(false);
+          }, 3000);
         });
       setNewComment({
         author: user,
@@ -64,6 +66,9 @@ function PostComment({
         variant: "danger",
         message: "You must type a comment before submitting",
       });
+      setTimeout(() => {
+        setFormMessage(false);
+      }, 3000);
     }
   }
 

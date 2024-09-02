@@ -57,14 +57,12 @@ function SingleArticle() {
         article_id,
         updatedObject.current - updatedObject.previous
       ).catch((err) => {
-        setArticleVotes(
-          articleData.votes
-        );
+        setArticleVotes(articleData.votes);
         setFormMessageDetails({
           variant: "danger",
-          message: "An error occurred while voting, please try again later"
-        })
-        setFormMessage(true)
+          message: "An error occurred while voting, please try again later",
+        });
+        setFormMessage(true);
       });
       return updatedObject;
     });
@@ -92,20 +90,20 @@ function SingleArticle() {
       <CardFooter className="single-article-footer">
         <span>{articleData.comment_count} comments</span>
         <div className="votes-and-buttons">
-            <Button
-              className="vote-button"
-              id="downvote"
-              value={-1}
-              active={currentAndPreviousValue.current === -1}
-              onClick={handleClick}
-            >
-              {currentAndPreviousValue.current === -1 ? (
-                <FaThumbsDown />
-              ) : (
-                <FaRegThumbsDown />
-              )}
-            </Button>
-            <span className="votes-number">{articleVotes} votes</span>
+          <Button
+            className="vote-button"
+            id="downvote"
+            value={-1}
+            active={currentAndPreviousValue.current === -1}
+            onClick={handleClick}
+          >
+            {currentAndPreviousValue.current === -1 ? (
+              <FaThumbsDown />
+            ) : (
+              <FaRegThumbsDown />
+            )}
+          </Button>
+          <span className="votes-number">{articleVotes} votes</span>
           <Button
             className="vote-button"
             id="upvote"
@@ -137,7 +135,11 @@ function SingleArticle() {
           formMessage={formMessage}
         />
       </div>
-      <Comments comments={comments} setComments={setComments} />
+      <Comments
+        comments={comments}
+        setComments={setComments}
+        setArticleData={setArticleData}
+      />
     </div>
   );
 }

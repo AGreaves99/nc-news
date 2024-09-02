@@ -1,20 +1,22 @@
 .vote-button {
-    background-color: white;
-    color: black;
-    border: 1px solid darkgray;
-    border-radius: 8px;
+  background-color: white;
+  color: black;
+  border: 1px solid darkgray;
+  border-radius: 8px;
 }
 
 .vote-button:hover {
-    background-color: rgb(253, 55, 55);
-    border: 1px solid darkgray;
+  background-color: rgb(253, 55, 55);
+  border: 1px solid darkgray;
 }
 
 .btn-primary {
-    --bs-btn-active-bg: rgb(253, 55, 55);
-    --bs-btn-active-border-color: darkgrey;
+  --bs-btn-active-bg: rgb(253, 55, 55);
+  --bs-btn-active-border-color: darkgrey;
+  --bs-btn-disabled-bg: rgb(211, 74, 74);
+  --bs-btn-disabled-border-color: darkgrey;
 }
 
 .votes-number {
-    margin-inline: 0.5em;
+  margin-inline: 0.5em;
 }
