@@ -8,28 +8,49 @@ function DeleteButton({
   comment_id,
   setCommentToDelete,
   setArticleData,
+  setError,
 }) {
   const [loading, setLoading] = useState(false);
-  function handleClick(event) {
+
+  function handleClick() {
     setLoading(true);
-    setCommentToDelete(comment_id);
-    deleteComment(comment_id).then(() => {
-      setTimeout(() => {
-        setComments((currentComments) => {
-          return currentComments.filter(
-            (comment) => comment.comment_id !== comment_id
-          );
-        });
-        setCommentToDelete(null);
-      }, 300);
-      setLoading(false);
-      setArticleData((currentData) => {
-        return { ...currentData, comment_count: currentData.comment_count - 1 };
+
+    deleteComment(comment_id)
+      .then(() => {
+        setCommentToDelete(comment_id);
+        setTimeout(() => {
+          setComments((currentComments) => {
+            return currentComments.filter(
+              (comment) => comment.comment_id !== comment_id
+            );
+          });
+          setCommentToDelete(null);
+
+          setArticleData((currentData) => {
+            return {
+              ...currentData,
+              comment_count: currentData.comment_count - 1,
+            };
+          });
+
+          setLoading(false);
+        }, 300);
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(true);
+        setLoading(false);
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setError(false);
+        }, 3000);
       });
-    });
   }
+
   return (
     <Button
+      aria-describedby="delete button"
       value={comment_id}
       disabled={loading}
       className="vote-button"
