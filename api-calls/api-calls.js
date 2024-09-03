@@ -31,12 +31,19 @@ export function voteComment(article_id, increment) {
 }
 
 export function postComment(article_id, newComment) {
-  return newsAPI.post(`/articles/${article_id}/comments`, newComment)
-  .then(({data}) => {
-    return data.comment
-  })
+  return newsAPI
+    .post(`/articles/${article_id}/comments`, newComment)
+    .then(({ data }) => {
+      return data.comment;
+    });
 }
 
 export function deleteComment(comment_id) {
-  return newsAPI.delete(`/comments/${comment_id}`)
+  return newsAPI.delete(`/comments/${comment_id}`);
+}
+
+export function getTopics() {
+  return newsAPI.get("/topics").then(({ data }) => {
+    return data.topics;
+  });
 }
