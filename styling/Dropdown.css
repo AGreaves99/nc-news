@@ -1,0 +1,10 @@
+/* TopicDropdown.css */
+#topic-select {
+  font-size: 16px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+  outline: none;
+  text-align: center;
+}
