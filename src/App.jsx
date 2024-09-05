@@ -20,34 +20,32 @@ function App() {
       <Navbar />
       <main>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <ItemsPerPage
-                  itemsPerPage={itemsPerPage}
-                  setItemsPerPage={setItemsPerPage}
-                />
-                <Articles
-                  pageNumber={pageNumber}
-                  itemsPerPage={itemsPerPage}
-                  setTotalPage={setTotalPage}
-                >
-                  <PageNavigation
-                    pageNumber={pageNumber}
-                    setPageNumber={setPageNumber}
-                    totalPage={totalPage}
+          {["/", "/:topic"].map((path) => (
+            <Route
+              key={path}
+              path={path}
+              element={
+                <>
+                  <ItemsPerPage
+                    itemsPerPage={itemsPerPage}
+                    setItemsPerPage={setItemsPerPage}
                   />
-                </Articles>
-              </>
-            }
-          />
-          <Route
-            path="/:article_id"
-            element={
-              <SingleArticle />
-            }
-          />
+                  <Articles
+                    pageNumber={pageNumber}
+                    itemsPerPage={itemsPerPage}
+                    setTotalPage={setTotalPage}
+                  >
+                    <PageNavigation
+                      pageNumber={pageNumber}
+                      setPageNumber={setPageNumber}
+                      totalPage={totalPage}
+                    />
+                  </Articles>
+                </>
+              }
+            />
+          ))}
+          <Route path="/:article_id" element={<SingleArticle />} />
         </Routes>
       </main>
     </>
