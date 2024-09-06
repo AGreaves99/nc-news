@@ -15,7 +15,7 @@ function TopicDropdown() {
 
   function handleClick(event) {
     const topic = event.target.value;
-    navigate(`/${topic}`);
+    topic ? navigate(`/topic/${topic}`) : navigate("/");
   }
 
   return (

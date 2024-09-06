@@ -15,7 +15,7 @@ export function makeArticleList(params) {
             <span>{formatTopic}</span>
             <span className="article-author">{article.author}</span>
           </Card.Header>
-          <Link className="card-link" to={`/${article.article_id}`}>
+          <Link className="card-link" to={`/article/${article.article_id}`}>
             <Card.Img
               src={article.article_img_url}
               alt="article image"

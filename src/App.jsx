@@ -20,7 +20,7 @@ function App() {
       <Navbar />
       <main>
         <Routes>
-          {["/", "/:topic"].map((path) => (
+          {["/", "/topic/:topic"].map((path) => (
             <Route
               key={path}
               path={path}
@@ -45,7 +45,7 @@ function App() {
               }
             />
           ))}
-          <Route path="/:article_id" element={<SingleArticle />} />
+          <Route path="/article/:article_id" element={<SingleArticle />} />
         </Routes>
       </main>
     </>
