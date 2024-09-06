@@ -7,6 +7,8 @@ import { useState } from "react";
 import ItemsPerPage from "./components/ItemsPerPage";
 import { Routes, Route } from "react-router-dom";
 import SingleArticle from "./components/SingleArticle";
+import SortArticles from "./components/SortArticles";
+import ArticleSortingWrapper from "./components/ArticleSortingWrapper";
 
 function App() {
   const [pageNumber, setPageNumber] = useState(1);
@@ -26,10 +28,13 @@ function App() {
               path={path}
               element={
                 <>
-                  <ItemsPerPage
-                    itemsPerPage={itemsPerPage}
-                    setItemsPerPage={setItemsPerPage}
-                  />
+                  <ArticleSortingWrapper>
+                    <ItemsPerPage
+                      itemsPerPage={itemsPerPage}
+                      setItemsPerPage={setItemsPerPage}
+                    />
+                    <SortArticles />
+                  </ArticleSortingWrapper>
                   <Articles
                     pageNumber={pageNumber}
                     itemsPerPage={itemsPerPage}
