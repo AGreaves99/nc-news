@@ -13,13 +13,13 @@ function TopicDropdown() {
     });
   }, []);
 
-  function handleClick(event) {
+  function handleChange(event) {
     const topic = event.target.value;
     topic ? navigate(`/topic/${topic}`) : navigate("/");
   }
 
   return (
-    <select name="topics" id="topic-select" onChange={handleClick}>
+    <select name="topics" id="topic-select" onChange={handleChange}>
       <option value="">--View by Topic--</option>
       {topics.map((topic) => (
         <option key={topic.slug} value={topic.slug}>
