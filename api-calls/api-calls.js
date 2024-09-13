@@ -5,15 +5,25 @@ const newsAPI = axios.create({
 });
 
 export function getArticles(params) {
-  return newsAPI.get("/articles", params).then(({ data }) => {
-    return data;
-  });
+  return newsAPI
+    .get("/articles", params)
+    .then(({ data }) => {
+      return data;
+    })
+    .catch((err) => {
+      throw err.response.data;
+    });
 }
 
 export function getArticle(article_id) {
-  return newsAPI.get(`/articles/${article_id}`).then(({ data }) => {
-    return data.article;
-  });
+  return newsAPI
+    .get(`/articles/${article_id}`)
+    .then(({ data }) => {
+      return data.article;
+    })
+    .catch((err) => {
+      throw err.response.data;
+    });
 }
 
 export function getComments(article_id) {
