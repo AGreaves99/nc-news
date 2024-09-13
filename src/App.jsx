@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import PageNavigation from "./components/PageNavigation";
 import { useState } from "react";
 import ItemsPerPage from "./components/ItemsPerPage";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import SingleArticle from "./components/SingleArticle";
 import SortArticles from "./components/SortArticles";
 import ArticleSortingWrapper from "./components/ArticleSortingWrapper";
@@ -51,6 +51,7 @@ function App() {
             />
           ))}
           <Route path="/article/:article_id" element={<SingleArticle />} />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </main>
     </>
