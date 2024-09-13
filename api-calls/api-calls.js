@@ -11,7 +11,6 @@ export function getArticles(params) {
       return data;
     })
     .catch((err) => {
-      console.log(err.response.data);
       throw err.response.data;
     });
 }
