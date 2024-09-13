@@ -13,6 +13,7 @@ import {
 import "../../styling/VoteButton.css";
 import Comments from "./Comments";
 import PostComment from "./PostComment";
+import ErrorMessage from "./ErrorMessage";
 
 function SingleArticle() {
   const { article_id } = useParams();
@@ -28,16 +29,21 @@ function SingleArticle() {
     variant: "",
     message: "",
   });
+  const [error, setError] = useState("");
 
   useEffect(() => {
-    getArticle(article_id).then((article) => {
-      setArticleData({
-        ...article,
-        topic: article.topic.charAt(0).toUpperCase() + article.topic.slice(1),
-        created_at: new Date(article.created_at).toLocaleString(),
+    getArticle(article_id)
+      .then((article) => {
+        setArticleData({
+          ...article,
+          topic: article.topic.charAt(0).toUpperCase() + article.topic.slice(1),
+          created_at: new Date(article.created_at).toLocaleString(),
+        });
+        setArticleVotes(article.votes);
+      })
+      .catch((err) => {
+        setError(err.msg);
       });
-      setArticleVotes(article.votes);
-    });
   }, []);
 
   function handleClick(event) {
@@ -123,24 +129,30 @@ function SingleArticle() {
   );
 
   return (
-    <div className="articles-comments-container">
-      <div className="article-newcomment-container">
-        <article>{articleCard}</article>
-        <PostComment
-          setComments={setComments}
-          setArticleData={setArticleData}
-          formMessageDetails={formMessageDetails}
-          setFormMessageDetails={setFormMessageDetails}
-          setFormMessage={setFormMessage}
-          formMessage={formMessage}
-        />
-      </div>
-      <Comments
-        comments={comments}
-        setComments={setComments}
-        setArticleData={setArticleData}
-      />
-    </div>
+    <>
+      {error ? (
+        <ErrorMessage err={error} />
+      ) : (
+        <div className="articles-comments-container">
+          <div className="article-newcomment-container">
+            <article>{articleCard}</article>
+            <PostComment
+              setComments={setComments}
+              setArticleData={setArticleData}
+              formMessageDetails={formMessageDetails}
+              setFormMessageDetails={setFormMessageDetails}
+              setFormMessage={setFormMessage}
+              formMessage={formMessage}
+            />
+          </div>
+          <Comments
+            comments={comments}
+            setComments={setComments}
+            setArticleData={setArticleData}
+          />
+        </div>
+      )}
+    </>
   );
 }
 
