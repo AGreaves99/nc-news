@@ -2,6 +2,8 @@
 
 This is the front-end application for **NC News**, a Reddit-style news platform where users can browse articles, read comments, vote, and interact with various topics. This front-end project is built using React and interacts with a RESTful API to fetch and display data dynamically.
 
+A link to the hosted site can be found [here](https://66e41ec653881a0b0f03ff4a--agreaves-nc-news.netlify.app/)
+
 ## Project Overview
 
 NC News is a web application where users can view and interact with articles on various topics. The front-end fetches data from the NC News API and displays it in a user-friendly format, allowing users to:
