@@ -15,7 +15,7 @@ NC News is a web application where users can view and interact with articles on 
 - Post and delete comments
 - Vote on articles and comments
 
-The back-end API that this front-end interacts with can be found [here](https://github.com/AGreaves99/nc-news).
+The back-end API that this front-end interacts with can be found [here](https://github.com/AGreaves99/news-API).
 
 ## Technologies
 
